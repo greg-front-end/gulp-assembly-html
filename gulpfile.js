@@ -7,9 +7,10 @@ const scss       = require('gulp-sass')(require('sass'));
     import gulpSass from 'gulp-sass'
     const sass = gulpSass(dartSass)
 */
-const concat      = require('gulp-concat');
-const browserSync = require('browser-sync').create();
-const uglify      = require('gulp-uglify-es').default();
+const concat       = require('gulp-concat');
+const browserSync  = require('browser-sync').create();
+const uglify       = require('gulp-uglify-es').default;
+const autoprefixer = require('gulp-autoprefixer');
 
 // for reload browser when did some change
 function browsersync() {
@@ -23,10 +24,11 @@ function browsersync() {
 // forking with scripts and min their
 function scripts() {
   return src([
+    'node_modules/jquery/dist/jquery.min.js',
     'app/js/main.js'
   ])
   // before we min js filse we should contac all of them
-  .pipe(concat(main.min.js))
+  .pipe(concat('main.min.js'))
   // after min them
   .pipe(uglify())
   // after send all of them in app/js folder
@@ -43,6 +45,11 @@ function styles() {
     .pipe(scss({outputStyle: 'compressed'})) // for default expanded
     // rename file css
     .pipe(concat('style.min.css'))
+    // add prefixes for older browsers
+    .pipe(autoprefixer({
+      overrideBrowserslist: ['last 10 version'],
+      grid: true
+    }))
     // send the finish css file to the src
     .pipe(dest('app/css'))
     // now tracking these file by using browserSync
@@ -54,6 +61,7 @@ function watching() {
   // gulp.watch starting to track the files and 
   // start using styles if it need
   watch(['app/scss/**/*.scss'], styles);
+  // tracking all files js exept !main.min.js
   watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
   watch(['app/*.html']).on('change', browserSync.reload);
 }
