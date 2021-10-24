@@ -32,3 +32,5 @@
   - `npm i --save-dev gulp-concat`
 - _*browser-sync*_ for reload browser after some updates in files
   - `npm i -save-dev browser-sync`
+  - _*gulp-uglify-es*_ for min js files
+  - `npm i -save-dev gulp-uglify-es`

@@ -9,6 +9,7 @@ const scss       = require('gulp-sass')(require('sass'));
 */
 const concat      = require('gulp-concat');
 const browserSync = require('browser-sync').create();
+const uglify      = require('gulp-uglify-es').default();
 
 // for reload browser when did some change
 function browsersync() {
@@ -17,6 +18,21 @@ function browsersync() {
       baseDir: 'app/'
     }
   });
+}
+
+// forking with scripts and min their
+function scripts() {
+  return src([
+    'app/js/main.js'
+  ])
+  // before we min js filse we should contac all of them
+  .pipe(concat(main.min.js))
+  // after min them
+  .pipe(uglify())
+  // after send all of them in app/js folder
+  .pipe(dest('app/js'))
+  // after reload browser
+  .pipe(browserSync.stream())
 }
 
 // the function for convert scss to css
@@ -38,15 +54,17 @@ function watching() {
   // gulp.watch starting to track the files and 
   // start using styles if it need
   watch(['app/scss/**/*.scss'], styles);
+  watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
   watch(['app/*.html']).on('change', browserSync.reload);
 }
 
-exports.styles   = styles;
-exports.watching = watching;
+exports.styles      = styles;
+exports.watching    = watching;
 exports.browsersync = browsersync;
+exports.scripts     = scripts;
 
 // when we starting gulp by write gulp the both function will be strated
-exports.default = parallel(browsersync, watching);
+exports.default = parallel(scripts, browsersync, watching);
 
 // async function builds() { scss() };
 // export { builds };
