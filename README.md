@@ -38,3 +38,7 @@
   - `npm i -save-dev gulp-autoprefixer`
 - _*gulp-autoprefixer*_ for add prefixes for older browsers
   - `npm i -save-dev gulp-autoprefixer`
+- _*gulp-imagemin*_ for min images
+  - `npm i -save-dev gulp-imagemin`
+- _*del*_ for remove dist folder after every build
+  - `npm i -save-dev del`

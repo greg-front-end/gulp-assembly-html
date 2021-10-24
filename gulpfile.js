@@ -1,4 +1,4 @@
-const { src, dest, watch, parallel } = require('gulp');
+const { src, dest, watch, parallel, series } = require('gulp');
 
 // get variables
 const scss       = require('gulp-sass')(require('sass'));
@@ -12,6 +12,7 @@ const browserSync  = require('browser-sync').create();
 const uglify       = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin     = require('gulp-imagemin');
+const del          = require('del');
 
 // for reload browser when did some change
 function browsersync() {
@@ -20,6 +21,11 @@ function browsersync() {
       baseDir: 'app/'
     }
   });
+}
+
+// for clean dist folder 
+function cleanDist() {
+  return del('dist')
 }
 
 // for min images and sage good quality
@@ -101,11 +107,12 @@ exports.styles      = styles;
 exports.watching    = watching;
 exports.browsersync = browsersync;
 exports.scripts     = scripts;
-exports.build       = build; 
 exports.imagemin    = imagemin;
+exports.cleanDist   = cleanDist;
 
+exports.build   = series(cleanDist, images, build); 
 // when we starting gulp by write gulp the both function will be strated
-exports.default = parallel(scripts, browsersync, watching);
+exports.default = parallel(styles, scripts, browsersync, watching);
 
 // async function builds() { scss() };
 // export { builds };
