@@ -2,9 +2,11 @@
 
 1. If you've previously installed gulp globally, run npm rm --global gulp before following these instructions. For more information, read this
 
-- `node --version`>
+<pre>
+- `node --version`
   or
-- <`js`>npx --version</`js`>
+- `npx --version`
+</pre>
 
 If they are not installed, follow the instructions <a href="https://nodejs.org/en/">here</a>
 
