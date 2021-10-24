@@ -11,6 +11,7 @@ const concat       = require('gulp-concat');
 const browserSync  = require('browser-sync').create();
 const uglify       = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
+const imagemin     = require('gulp-imagemin');
 
 // for reload browser when did some change
 function browsersync() {
@@ -19,6 +20,25 @@ function browsersync() {
       baseDir: 'app/'
     }
   });
+}
+
+// for min images and sage good quality
+function images() {
+  return src('app/images/**/*')
+    .pipe(imagemin(
+      [
+        imagemin.gifsicle({interlaced: true}),
+        imagemin.mozjpeg({quality: 75, progressive: true}),
+        imagemin.optipng({optimizationLevel: 5}),
+        imagemin.svgo({
+          plugins: [
+            {removeViewBox: true},
+            {cleanupIDs: false}
+          ]
+        })
+      ]
+    ))
+    .pipe(dest('dist/images'))
 }
 
 // forking with scripts and min their
@@ -82,6 +102,7 @@ exports.watching    = watching;
 exports.browsersync = browsersync;
 exports.scripts     = scripts;
 exports.build       = build; 
+exports.imagemin    = imagemin;
 
 // when we starting gulp by write gulp the both function will be strated
 exports.default = parallel(scripts, browsersync, watching);
