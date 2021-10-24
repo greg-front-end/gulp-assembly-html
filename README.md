@@ -8,16 +8,16 @@
   npx --version
 </pre>
 
-If they are not installed, follow the instructions <a href="https://nodejs.org/en/">here</a>
+    If they are not installed, follow the instructions <a href="https://nodejs.org/en/">here</a>
 
 2. Install gulp globally
 
-   - npm install --global gulp-cli
+<code>npm install --global gulp-cli</code>
 
 3. If it's a new project you should create a package.json file in your project directory(This will guide you through giving your project a name, version, description, etc.)
 
-   - npm init
+<code>npm init</code>
 
 4. Install the gulp package in your local folder in your devDependencies
 
-   - npm install --save-dev gulp
+<code>npm install --save-dev gulp</code>
