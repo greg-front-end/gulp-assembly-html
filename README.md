@@ -36,3 +36,5 @@
   - `npm i -save-dev gulp-uglify-es`
 - _*gulp-autoprefixer*_ for min js files
   - `npm i -save-dev gulp-autoprefixer`
+- _*gulp-autoprefixer*_ for add prefixes for older browsers
+  - `npm i -save-dev gulp-autoprefixer`

@@ -56,6 +56,17 @@ function styles() {
     .pipe(browserSync.stream())
 }
 
+// for build files in dist folder production
+function build() {
+  return src([
+    'app/css/style.min.css',
+    'app/fonts/**/*',
+    'app/js/main.min.js',
+    'app/*.html'
+  ], {base: 'app'})
+  .pipe(dest('dist'))
+}
+
 // function for tracking changes
 function watching() {
   // gulp.watch starting to track the files and 
@@ -70,6 +81,7 @@ exports.styles      = styles;
 exports.watching    = watching;
 exports.browsersync = browsersync;
 exports.scripts     = scripts;
+exports.build       = build; 
 
 // when we starting gulp by write gulp the both function will be strated
 exports.default = parallel(scripts, browsersync, watching);
