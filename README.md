@@ -1,6 +1,6 @@
 # hrach-gulp-start
 
-1. If you've previously installed gulp globally, run npm rm --global gulp before following these instructions.
+1. If you've previously installed <b>node.js</b>
 <ul>
   <li><code>node --version</code></li>
   or
