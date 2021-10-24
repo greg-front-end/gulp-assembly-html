@@ -26,7 +26,9 @@
 
 6. Let's start install plagins:
 
-- And first plagin is sass for forking with scss
-  - `npm i --save-dev gulp-sass`
-- _gulp-concat_ for rename and concatination files
+- And first plagin is _*sass and gulp-sass*_ for forking with scss
+  - `npm i --save-dev sass gulp-sass`
+- _*gulp-concat*_ for rename and concatination files
   - `npm i --save-dev gulp-concat`
+- _*browser-sync*_ for reload browser after some updates in files
+  - `npm i -save-dev browser-sync`
