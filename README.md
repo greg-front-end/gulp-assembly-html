@@ -1,6 +1,6 @@
 # hrach-gulp-start
 
-1. If you've previously installed <b>node.js</b>
+1. If you've previously installed <b>node.js</b> you can check the version
 
 <ul>
   <li><code>node --version</code></li>
