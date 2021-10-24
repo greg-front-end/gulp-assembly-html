@@ -2,11 +2,11 @@
 
 1. If you've previously installed <b>node.js</b>
 
-- <ul>
-    <li><code>node --version</code></li>
-    or
-    <li><code>npx --version</code></li>
-  </ul>
+<ul>
+  <li><code>node --version</code></li>
+  or
+  <li><code>npx --version</code></li>
+</ul>
 
 - If they are not installed, follow the instructions <a href="https://nodejs.org/en/">here</a>
 
