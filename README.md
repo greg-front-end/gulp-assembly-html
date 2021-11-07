@@ -42,3 +42,15 @@
   - `npm i -save-dev gulp-imagemin`
 - _*del*_ for remove dist folder after every build
   - `npm i -save-dev del`
+
+// If you have any problems, make sure your current modules are up to date using the command
+// npm update. If the issue persists, investigate the issue in the individual project repository.
+
+// undertaker - система регистрации задач
+// vinyl - виртуальные файловые объекты
+// vinyl-fs - адаптер для вашей локальной файловой системы
+// glob-watcher - вотчер файлов
+// bach - оркестровка задач с использованием series() и parallel()
+// last-run - отслеживает время последнего выполнения задачи
+// vinyl-sourcemap - встроенная поддержка sourcemap
+// gulp-cli - интерфейс командной строки для взаимодействия с gulp

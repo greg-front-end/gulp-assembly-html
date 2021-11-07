@@ -8,7 +8,7 @@ const { src, dest, watch, parallel, series } = require('gulp');
 */
 
 // === FILES PATHS === //
-const source_folder = "#app";
+const source_folder = "#app" || 'app' || '#src' || 'src' || 'assets' || '#assets';
 const dist = 'dist';
 const scirptFileName = 'main';
 // let project_folder = require("path").basename(__dirname); // if we want give rename dist folder to project folder name
@@ -279,3 +279,39 @@ exports.watching    = watching;
 exports.prodScripts = productionScripts;
 exports.sync        = browserSync;
 exports.build       = build;
+
+// cb(new Error('kaboom'));
+// const fs = require('fs');
+ 
+// function passingCallback(cb) {
+// 	fs.access('gulpfile.js', cb);
+// }
+ 
+// exports.default = passingCallback
+ 
+async function asyncAwaitTask() {
+	const { version } = fs.readFileSync('gulpfile.js');
+	console.log(version);
+	await Promise.resolve('some result');
+}
+ 
+exports.asyncAwaitTask = asyncAwaitTask;
+
+// exports.default = function() {
+// 	return src('src/*.js')
+// 		.pipe(babel())
+// 		.pipe(src('vendor/*.js'))
+// 		.pipe(uglify())
+// 		.pipe(dest('output/'));
+// }
+
+// exports.default = function() {
+// 	return src('src/*.js')
+// 		.pipe(babel())
+// 		.pipe(src('vendor/*.js'))
+// 		.pipe(dest('output/'))
+// 		.pipe(uglify())
+// 		.pipe(rename({ extname: '.min.js' }))
+// 		.pipe(dest('output/'));
+// }
+
